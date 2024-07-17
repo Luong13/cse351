@@ -1,0 +1,20 @@
+*****************************
+* Lab 5 Synthesis Questions *
+*****************************
+Name: Luong Dinh
+ID: 2066624 
+
+
+-----------------------------------------------------------
+1) Alignment: 16
+   Reasoning: I malloc'ed 0 which allocated 32 bytes, and then increased the malloc size little by little until it changed to an allocation size of 48. This meant that alignment must be 48-32=16
+
+
+
+-----------------------------------------------------------
+2) Boundary Tag Size: 8 
+   Reasoning: The smallest block size is 32 bytes, and I found that malloc(24) allocates 32 bytes while malloc(25) allocates 48 bytes. This means that 24 bytes is the maximum payload, where there is no padding, so the remaining 8 bytes in the block must be all boundary tags.
+
+
+
+-----------------------------------------------------------

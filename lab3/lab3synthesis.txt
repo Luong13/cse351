@@ -1,0 +1,28 @@
+*****************************
+* Lab 3 Synthesis Questions *
+*****************************
+Name: Luong Dinh
+ID:   
+
+
+-----------------------------------------------------------
+1) Explain: The segmentation fault occurs because the part 2 function allocates a certain chunk of memory for the array based on the code that initialized the array. But when the fillArray function is called and is passed a length int that is too long (15), it fills values past the bounds of the array, through some mystery data, and goes into the return address and overwrites the return address in the stack frame of part 2. The assembly instruction that causes the segmentation fault is the return instruction at the end of part 2 function.
+
+
+
+-----------------------------------------------------------
+2) Instruction 1: <part2 + 0> sub $0x48,%rsp
+   Purpose: This instruction subtracts from the stack pointer to create a stack frame for the function part2. This is relevant to the limit of the array because it determines how much memory there is within the stack frame before the values being added to the array get into the return address and rewrites the address and cause a segmentation fault.
+
+   Instruction 2: <part2 + 14> lea 0x10(%rsp),%rax
+   Purpose: This instruction determines the address of the array that will be passed to fillArray. Specifically, it chose 16 bytes above the stack pointer to be where the array would start. This is relevant to the limit of the array because combined with the instruction mentioned above, it determines how much memory there is between the start of the array and where the return address is being stored.
+
+   Minimum length to cause a seg fault: 15 int types, or 57 bytes
+   Calculation: The first instruction mentioned subtracted 72 bytes from the stack pointer, and the second instruction mentioned chose the array to be 16 bytes above the newly subtracted stack pointer. That means that there are 72 - 16 = 56 bytes of usable memory before the fillArray function invades the return address. The 57th byte in the array will overwrite the return address, but since the array is of int type, that will be the 15th int value.
+-----------------------------------------------------------
+3) Agree or Disagree: I mostly agree
+   Explain: Segmentation fault occurs because the return address is corrupted which causes the return instruction to try to access a memory that is not allowed. Putting the array in the heap would remove the possibility of the return address in the stack being overwritten, but other problems would still occur. The array would still have no bounds checking and you could still write beyond the array to ruin mystery data in the heap. So putting the array in the heap would avoid segmentation fault, but other problems can still occur.
+
+
+
+-----------------------------------------------------------

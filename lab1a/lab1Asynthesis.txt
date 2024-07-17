@@ -1,0 +1,24 @@
+******************************
+* Lab 1a Synthesis Questions *
+******************************
+Name: Luong Dinh 
+ID:   2066624
+
+
+-----------------------------------------------------------
+1) Use/Benefit and Equation:
+Pointer arithmetic is useful because it allows us to access any sequence of bytes of any size within memory even when we don't have a variable assigned to the data.
+Arrays are very similar to pointers because arrays allow us to access a specified group of data of a certain type. Array indexing is just a specific way of using pointer arithmetic to get to the address of a certain piece of data (ie. arr[i] is the same as *(arr + i)). 
+
+
+-----------------------------------------------------------
+2) Steps:
+To calculate the number of bytes between the addresses that two pointers point to, I first casted both pointers to type char* because char is one byte so pointer arithmetic of type char* will give me a result in bytes. Then all I had to do was subtract one pointer from the other and the result will be the number of char between them, which is equivalent to the number of bytes between them.
+
+
+-----------------------------------------------------------
+3) Explain:
+Passing pointers as parameters allows us to directly manipulate the data at the address of reference. Whereas if we were to pass int values to swapInt(...), the function would create copies of the parameter that would only exist in the function and the original variables passed to the function would be unchanged. If we were to do that, we would have to modify the function to return the data type so that we can store the newly swapped value in the function that we called swapInt(...) from.
+
+
+-----------------------------------------------------------

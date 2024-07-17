@@ -1,0 +1,5 @@
+movq $0x602308, %rbx
+movl $0x6964d62f, (%rbx)
+movl $0x38fbfdb, 0x4(%rbx)
+pushq $0x401020
+retq
